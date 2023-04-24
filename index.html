@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Earthquake.io</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div>
@@ -19,16 +20,32 @@
       </div>
       <div>
         <h3>World Map</h3>
+        <p> idk how to make the data visible</p>
       </div>
-      <p>(Insert map with markers over earthquake locations)</p>
-      <div>
-        <li>01/01/2023 (Earthquake Location) Magnitude:8</li>
-        <li>01/01/2023 (Earthquake Location) Magnitude:8</li>
-        <li>01/01/2023 (Earthquake Location) Magnitude:8</li>
-        <li>01/01/2023 (Earthquake Location) Magnitude:8</li>
-        <li>01/01/2023 (Earthquake Location) Magnitude:8</li>
+      <div class="right_section box">
+        <h2>Earthquake Map</h2>
+        <div id="map" class="box"></div>
+        <ol class="box" id="earthquake_list">
+            A list of recent earthquakes 
+        </ol>
+        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
       </div>
+      <div class="left_section box">
+        <h2>Form Inputs</h2>
+        <form class="box main_form">
+            <button type="button" id="data_load">Load Data</button>
+            <button type="button" id="data_clear">Clear Data</button>
+            <div>
+                <label for="Loca"></label> Filter By Location</label>
+                <input type="text" name= "loca" id="loca">
+            </div>
+            <div class="buttons">
+                <button type="button" id="generate">Generate List</button>
+            </div>
+        </form>
+    </div>
     </div>
   </div>
+  <script src="./script.js"></script>
 </body>
 </html>
