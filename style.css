@@ -4,55 +4,104 @@
   }
   
   
-  html {
-    background-color: #fff;
-    font-size: 16px;
-    min-width: 300px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-  
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: rgb(239, 239, 239);
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  h2, h3 {
-    margin:0;
-    padding:0;
-    padding-bottom:1.5rem;
-  }
-   
-  .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex: 1;
-  }
+html {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgb(239, 239, 239);
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2, h3 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+}
+
+main {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+section {
+	margin: 20px 0;
+}
+
+#map-container {
+	height: 400px;
+}
+
+#map {
+  width: 400px;
+  height: 380px;
+  margin-bottom: 1rem;
+}
+
+#search-form label {
+	display: block;
+	margin-top: 10px;
+}
+
+#search-form input {
+	margin-left: 10px;
+	padding: 5px;
+}
+
+#search-form input[type="submit"] {
+	margin-left: 20px;
+}
+
+#search-results table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#search-results th,
+#search-results td {
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+
+#search-results th {
+	background-color: #f2f2f2;
+}
+
+#search-results tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#search-results tr:hover {
+	background-color: #ddd;
+}
   
   .container {
     margin: 0 20px;
@@ -60,33 +109,6 @@
     justify-content: space-evenly;
     align-items: start;
     flex:1;
-  }
-  
-  .header {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.5rem;
-  }
-  
-  .header h1 {
-    display: block;
-
-    background-color: #99d0dd;
-    color: #4a4a4a;
-  
-    border-radius: 6px;
-    font-size: 1.5rem;
-    padding: 1.25rem;
-    margin:0; 
-  
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-  }
-  
-  #map {
-    width: 400px;
-    height: 380px;
-    margin-bottom: 1rem;
   }
 
   .box {
@@ -100,23 +122,6 @@
     margin: 0 auto;
   }
   
-  .left_section {
-    background-color: rgba(163, 142, 227, 0.8);
-    flex: 0 1 auto;
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .right_section {
-    background-color: rgba(240, 191, 231, 0.7);
-    flex: 1 2 auto;
-    margin: 1rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
   .footer {
     flex-shrink: 0;
     padding: 1rem;
@@ -124,67 +129,4 @@
     font-size: 1.2rem;
     font-weight: 600;
   }
-  
-  .footer a {
-    color: rgb(112, 188, 74);
-    text-decoration: underline;
-  }
-  
-  .footer a:hover {
-    /* Hue, saturation, luminosity, alpha */
-    background-color: hsla(0, 0%, 90%, 0.15);
-    /* red, green, blue, alpha */
-    color: rgb(99, 233, 79);
-    text-decoration: none;
-  }
-  
-  .subtitle {
-    color: rgba(0, 0, 0, 0.8);
-    margin: 0px;
-    margin-bottom: 5px;
-  }
-  
-  .grid {
-    display: flex;
-    justify-content: space-evenly;
-    flex-flow: wrap;
-    width: 350px;
-    height: 350px;
-    margin: 0 auto;
-  }
-  
-  .grid img {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  form input {
-      /* This is a hack to make sure our boxes line up with one another nicely */
-      width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      width: fill-available;
-  
-      /* here we are setting white space correctly */
-      margin-bottom: 1rem;
-      height: 2rem;
-      border-radius: 4px;
-    }
-  
-    form label {
-      width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      width: fill-available;
-      align-items: flex-start;
-  
-      display: block; /* this turns the label text into a box we can set margins on */
-      margin-bottom: 0.5rem;
-    }
   
