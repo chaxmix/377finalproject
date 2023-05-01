@@ -10,44 +10,25 @@
 	<script src="script.js"></script>
 </head>
 <body>
-  <div>
+  <main>
     <header><h1>Earthquake.io</h1></header>
-    <div>
-      <div>
-        <h3>Select Year (dropdown menu)</h3>
-          <li>2023</li>
-          <li>2022</li>
-          <li>2021</li>
-          <li>2020</li>
-          <li>2019</li>
-      </div>
-      <div>
-        <h3>World Map</h3>
-        <p> idk how to make the data visible</p>
-      </div>
-      <div class="right_section box">
-        <h2>Earthquake Map</h2>
-        <div id="map" class="box"></div>
-        <ol class="box" id="earthquake_list">
-            A list of recent earthquakes 
-        </ol>
-        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
-      </div>
-      <div class="left_section box">
-        <h2>Form Inputs</h2>
-        <form class="box main_form">
-            <button type="button" id="data_load">Load Data</button>
-            <button type="button" id="data_clear">Clear Data</button>
-            <div>
-                <label for="Loca"></label> Filter By Location</label>
-                <input type="text" name= "loca" id="loca">
-            </div>
-            <div class="buttons">
-                <button type="button" id="generate">Generate List</button>
-            </div>
-        </form>
-    </div>
-    </div>
-  </div>
+        <section id="map-container">
+          <h2>Recent Earthquakes</h2>
+          <div id="map"></div>
+        </section>
+        <section id="search-container">
+          <h2>Search for Earthquakes</h2>
+          <form id="search-form">
+            <label for="location-input">Location:</label>
+            <input type="text" id="location-input" name="location-input">
+            <label for="date-input">Date:</label>
+            <input type="date" id="date-input" name="date-input">
+            <label for="magnitude-input">Magnitude:</label>
+            <input type="number" id="magnitude-input" name="magnitude-input" step="0.1" min="0">
+            <input type="submit" value="Search">
+          </form>
+          <div id="search-results"></div>
+        </section>
+  </main>
 </body>
 </html>
