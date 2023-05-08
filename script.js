@@ -1,4 +1,17 @@
 $(document).ready(function() {
+  const localStorageKey = 'earthquakeData';
+
+  function saveDataToLocalStorage(data) {
+    localStorage.setItem(localStorageKey, JSON.stringify(data));
+  }
+
+  function getDataFromLocalStorage() {
+    const data = localStorage.getItem(localStorageKey);
+    return data ? JSON.parse(data) : null;
+  }
+
+
+$(document).ready(function() {
   const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2023-04-30&minmagnitude=2.5&limit=500";
 
   $.get(url, function(response) {
