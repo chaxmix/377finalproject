@@ -10,19 +10,37 @@ $(document).ready(function() {
     return data ? JSON.parse(data) : null;
   }
 
-  function fetchData() {
-    const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2023-01-01&endtime=2023-04-30&minmagnitude=2.5&limit=500";
+  function fetchData(location, date, magnitude) {
+    const formattedDate = date && date instanceof Date && !isNaN(date) ? date.toISOString().split('T')[0] : '';
+    const url = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${formattedDate}&endtime=${formattedDate}&minmagnitude=${magnitude}&limit=500`;
+    console.log("Fetching data from API...");
 
     $.get(url, function(response) {
       const earthquakes = response.features;
+
+      console.log("Received earthquake data:", earthquakes);
+
       saveDataToLocalStorage(earthquakes);
       renderMarkers(earthquakes);
     });
   }
 
   function renderMarkers(earthquakes) {
-      const markers = [];
-      const map = L.map('map').setView([38.98, -76.93], 13);
+    console.log("Rendering markers on the map...");
+  
+    const markers = [];
+    const mapElement = document.getElementById('map');
+    
+    let map;
+    if (mapElement.hasChildNodes()) {
+      map = mapElement._leaflet_map;
+    } else {
+      map = L.map('map').setView([38.98, -76.93], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+    } 
 
       for (let i = 0; i < earthquakes.length; i++) {
         const earthquake = earthquakes[i];
@@ -42,14 +60,29 @@ $(document).ready(function() {
       }
 
       const earthquakeLayer = L.layerGroup(markers);
-      earthquakeLayer.addTo(map);
+      
+      if (map && map.addLayer) {
+        earthquakeLayer.addTo(map);
+      }
     }
-    
+
+    $('#search-form').submit(function(e) {
+      e.preventDefault();
+      const location = $('#location-input').val();
+      const date = new Date($('#date-input').val());
+      const magnitude = parseFloat($('#magnitude-input').val()) || 0;
+      fetchData(location, date, magnitude);
+    });
+
     function init() {
+      console.log("Initializing the application...");
+
       const savedData = getDataFromLocalStorage();
-      if (savedData) {
+      if (savedData && savedData.length > 0) {
+        console.log("Using saved earthquake data from local storage:", savedData);
         renderMarkers(savedData);
       } else {
+        console.log("No saved data found. Fetching fresh data from API...");
         fetchData();
       }
     }
